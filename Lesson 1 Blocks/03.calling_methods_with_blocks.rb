@@ -57,6 +57,7 @@ increment(5) do |num|
   puts num
 end
 
+new
 
 
 
