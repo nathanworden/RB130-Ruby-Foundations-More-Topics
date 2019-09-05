@@ -12,7 +12,8 @@ end
 
 times(5)
 
-# What happens when you call the `times` method above without a block?
+# What happens when you call the `times` method above on line 13
+# without a block?
 
 # A) IOError
 # B) LocalJumpError
@@ -22,4 +23,4 @@ times(5)
 
 
 # Answer:
-# LocalJumpError
+# no block given (yield): LocalJumpError

@@ -10,9 +10,8 @@ def each(array)
 end
 
 
-each([1, 2, 3, 4, 5]) do |num|
-  puts (num * 1000)
-end
 
-
+p(each([1, 2, 3, 4, 5]) do |num|
+  puts num
+end)
 

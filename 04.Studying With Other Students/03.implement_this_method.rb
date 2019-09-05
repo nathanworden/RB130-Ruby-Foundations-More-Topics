@@ -3,8 +3,6 @@
 # "nothing happens here" is printed to the screen.
 
 
-
-
 theDs = ["Dave", "Drew", "Dapper Dan", "Drogo the Dragon"]
 
 storytime(theDs) do |name|
