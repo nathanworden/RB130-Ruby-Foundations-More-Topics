@@ -1,46 +1,37 @@
-# p([1, 2, 3].reduce do |acc, num|
-#   acc + num
-# end)
-
-
-# def reduce(arr)
+# def reduce(arr, acc_start=0)
 #   counter = 0
-#   num = 1
-#   acc = arr[0]
+#   accumulator = acc_start
 #   while arr.size > counter
-#     acc = yield(acc, arr[num]) if arr[counter].odd?
+#     accumulator = yield(accumulator, arr[counter])
 #     counter += 1
-#     num += 1
 #   end
 
-#   acc
+#   accumulator
 # end
+
+
+# array = [1, 2, 3, 4, 5]
+
+# p (reduce(array) { |acc, num| acc + num }             )       # => 15
+# p (reduce(array, 10) { |acc, num| acc + num }         )       # => 25
+# p (reduce(array) { |acc, num| acc + num if num.odd? } )       # => NoMethodError:
+
 
 def reduce(arr)
   counter = 0
-  acc = 0
+  kind = arr[0].class
+  accumulator = case 
+                when kind == String then ""
+                when kind == Array then []
+                when kind == Integer then 0
+                end
   while arr.size > counter
-    acc = yield(acc, arr[counter]) if arr[counter].odd?
+    accumulator = yield(accumulator, arr[counter])
     counter += 1
   end
 
-  acc
+  accumulator
 end
 
-
-p (reduce([1, 2, 3, 7, 9, 2, 2]) do |acc, num|
-    acc + num
-  end)
-
-
-
-# [1, 2, 3].reduce do |acc, num|
-#   acc + num if num.odd?
-# end
-
-
-# We want to select the odd numbers out of this array and then 
-# multiply them. The answer should be 105.
-
-# p [1, 2, 3, 4, 5, 6, 7].select {|num| num.odd?}.reduce(:*)
-
+p (reduce(['a', 'b', 'c']) { |acc, value| acc + value }    ) # => 'abc'
+p (reduce([[1, 2], ['a', 'b']]) { |acc, value| acc += value }) # => [1, 2, 'a', 'b']
