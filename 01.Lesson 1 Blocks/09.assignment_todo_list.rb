@@ -1,3 +1,32 @@
+class Todo
+  DONE_MARKER = 'X'
+  UNDONE_MARKER = ' '
+
+  attr_accessor :title, :description, :done
+
+  def initialize(title, description='')
+    @title = title
+    @description = description
+    @done = false
+  end
+
+  def done!
+    self.done = true
+  end
+
+  def done?
+    done
+  end
+
+  def undone!
+    self.done = false
+  end
+
+  def to_s
+    "[#{done? ? DONE_MARKER : UNDONE_MARKER}] #{title}"
+  end
+end
+
 class TodoList
   attr_accessor :title
 
@@ -29,7 +58,7 @@ class TodoList
   end
 
   def to_a
-    todos
+    todos.clone
   end
 
   def done?
@@ -65,55 +94,56 @@ class TodoList
     todos.delete_at(index)
   end
 
+  def each
+    counter = 0
+
+    while counter < todos.size
+      yield(todos[counter])
+      counter += 1
+    end
+
+    todos
+  end
+
+  def select
+    result = []
+    each do |todo| 
+      result << todo if yield(todo)
+    end
+    result
+  end
+
   def to_s  
-    "---- Today's Todos ----"
-    todos.each {|item| puts item}
+    text = "---- #{title} ----\n"
+    # todos.each {|item| puts item}
+    text << todos.map {|item| item.to_s}.join("\n")
+    text
   end
 
   private
   attr_accessor :todos
 end
 
-class Todo
-  DONE_MARKER = 'X'
-  UNDONE_MARKER = ' '
-
-  attr_accessor :title, :description, :done
-
-  def initialize(title, description='')
-    @title = title
-    @description = description
-    @done = false
-  end
-
-  def done!
-    self.done = true
-  end
-
-  def done?
-    done
-  end
-
-  def undone!
-    self.done = false
-  end
-
-  def to_s
-    "[#{done? ? DONE_MARKER : UNDONE_MARKER}] #{title}"
-  end
-end
-
 todo1 = Todo.new("Buy milk")
 todo2 = Todo.new("Clean room")
 todo3 = Todo.new("Go to gym")
+
 list = TodoList.new("Today's Todos")
 
 list.add(todo1)
 list.add(todo2)
-p list.add(todo3)
+list.add(todo3)
 # list.add(1)
 
-puts list
+todo1.done!
+
+results = list.select {|todo| todo.done?}
+
+puts results.inspect
+
+# list.each do |todo|
+#   puts todo
+# end
 
 # list.size
 # list.first

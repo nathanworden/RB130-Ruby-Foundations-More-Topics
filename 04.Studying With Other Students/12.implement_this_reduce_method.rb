@@ -9,6 +9,7 @@ p (reduce([1, 2, 3, 7, 9, 2, 2, 126]) do |acc, num|
     acc + num
   end)
 
+# => 20
 
 
 
