@@ -76,7 +76,7 @@
   #   assert_equal([@todo1, @todo2, @todo3, new_todo], @list.add(new_todo))
   # end
 
-  def test_add
+  def test_add_alias
     new_todo = Todo.new("Go on a run")
     @list.add(new_todo)
     @todos << (new_todo)
@@ -168,6 +168,19 @@
     @list.each {|item| verify << item}
 
     assert_equal(verify, @todos)
+  end
+
+  def test_each_returns_original_object
+    assert_equal(@list, @list.each {|itm| nil})
+  end
+
+  def test_select
+    @todo1.done!
+    list = TodoList.new(@list.title)
+    list.add(@todo1)
+
+    assert_equal(list.title, @list.title)
+    assert_equal(list.to_s, @list.select{|todo| todo.done?}.to_s)
   end
 
 end

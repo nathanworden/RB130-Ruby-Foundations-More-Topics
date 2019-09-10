@@ -104,7 +104,7 @@ class TodoList
       counter += 1
     end
 
-    todos
+    self
   end
 
   def select
@@ -113,6 +113,10 @@ class TodoList
       result << todo if yield(todo)
     end
     result
+  end
+
+  def ==(other)
+    other.is_a?(TodoList)
   end
 
   def find_by_title(title)

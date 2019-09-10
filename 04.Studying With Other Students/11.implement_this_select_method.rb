@@ -56,3 +56,13 @@ def select(arr)
   end
   output
 end
+
+
+
+# Juliet's answer: 
+def select(arr)
+  arr.each_with_object([]) do |el, result|
+    puts el
+    result << el * 3 if yield(el)
+  end
+end
