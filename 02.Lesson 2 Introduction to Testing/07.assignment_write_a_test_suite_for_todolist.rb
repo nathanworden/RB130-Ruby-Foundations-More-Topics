@@ -137,8 +137,37 @@
     assert_equal(output, @list.to_s)
   end
 
-  def test_to_s_done
-    
+  def test_to_s_2
+    output = <<~OUTPUT.chomp
+    ---- Today's Todos ----
+    [ ] Buy milk
+    [X] Clean room
+    [ ] Go to gym
+    OUTPUT
+
+    @list.mark_done_at(1)
+    assert_equal(output, @list.to_s)
+  end
+
+  def test_to_s_3
+    output = <<-OUTPUT.chomp.gsub /^\s+/, ""
+        ---- Today's Todos ----
+    [X] Buy milk
+    [X] Clean room
+    [X] Go to gym
+    OUTPUT
+
+    @list.done!
+    assert_equal(output, @list.to_s)
+  end
+
+
+# study the book answer more for this one
+  def test_each
+    verify = []
+    @list.each {|item| verify << item}
+
+    assert_equal(verify, @todos)
   end
 
 end
