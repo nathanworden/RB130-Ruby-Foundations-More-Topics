@@ -1,9 +1,13 @@
 class DoesNotComputeError < StandardError; end
 
+# def compute
+#   yield
+#   rescue
+#     'Does not compute.'
+# end
+
 def compute
-  yield
-  rescue
-    'Does not compute.'
+  block_given? ? yield : 'Does not compute.'
 end
 
 

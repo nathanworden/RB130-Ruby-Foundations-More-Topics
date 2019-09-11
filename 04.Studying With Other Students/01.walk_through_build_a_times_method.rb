@@ -45,4 +45,27 @@ end
 # flot to line 9, which doesn't do anything. 
 #10) Reaching the end of the method at line 10, execution will
 # return the last expression in this method, which is the `number`
-# local variable.
+#
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ local variable.

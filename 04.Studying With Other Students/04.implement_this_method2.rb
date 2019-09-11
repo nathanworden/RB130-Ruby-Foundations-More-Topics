@@ -1,5 +1,6 @@
-# In only 3 lines of code implement the `each` method on line 9
-# so that it prints out the commented out code on lines 14-19.
+# In only 3 lines of code implement the `each` method on line 9 so that it prints out the commented out code on lines 14-19.
+
+
 
 
 
