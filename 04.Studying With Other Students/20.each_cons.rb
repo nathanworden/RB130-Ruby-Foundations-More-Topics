@@ -4,7 +4,7 @@ sentence = "Ruby is an interpreted, high-level, general-purpose programming lang
 
 # Please use the Enumerable method each_cons as part of your implementation.
 
-# Your answer should be in the form of a hash with the key being an array of the two words that appear most, and the value being the number of times those words appear next to each other.
+# Your answer should be in the form of an array with the first element being an array of the two words that appear most, and the second element being the number of times those words appear next to each other.
 
 # For example, if you have this sentence:
 
@@ -50,3 +50,16 @@ def find_most_repeated_word_pairs(str)
 end
 
 =end
+
+
+
+
+
+
+
+
+
+
+
+
+

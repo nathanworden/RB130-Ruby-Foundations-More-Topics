@@ -1,5 +1,5 @@
 # Implement the select method below so that when you pass in the
-# array on line 7 it will out put 1, 2, 3, 4, 5 but 
+# array on line 7 it will output 1, 2, 3, 4, 5 but 
 # return [3, 9, 15]
 
 
@@ -65,4 +65,12 @@ def select(arr)
     puts el
     result << el * 3 if yield(el)
   end
+end
+
+# Jamima's answer:
+def select(arr)
+  arr.each do |num|
+    puts num
+  end
+  arr.select { |n|  yield n }.map { |n| n * 3 }
 end

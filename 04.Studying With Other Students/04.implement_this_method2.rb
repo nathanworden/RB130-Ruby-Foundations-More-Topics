@@ -49,3 +49,13 @@ end)
 # def each(array)
 #   array.each {|element| yield(element)}
 # end
+
+
+
+# Jamima answer:
+# def each(arr)
+#   yield arr; arr
+# end
+
+
+

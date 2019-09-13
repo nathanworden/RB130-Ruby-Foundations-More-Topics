@@ -60,3 +60,25 @@ def reduce(arr)
 
   accumulator
 end
+
+
+
+# Juliet Answer
+def reduce(arr)
+  acc = arr.first
+  arr[1..-1].each do |el|
+    acc = yield(acc, el)
+  end
+  acc
+end
+
+
+
+
+
+
+
+
+
+
+

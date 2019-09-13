@@ -3,11 +3,7 @@
 
 # Answer
 
-# It provides additional flexibility. Before with the implicit block, 
-# e didn't have a handle (a variable) for the implicit block, so we 
-# couldn't do much with it except yield to it and test whether a block
-# as provided. Now we have a variable that represents the block, so 
-# we can pass the block to another method:
+# It provides additional flexibility. Before with the implicit block, we didn't have a handle (a variable) for the implicit block, so we couldn't do much with it except yield to it and test whether a block as provided. Now we have a variable that represents the block, so we can pass the block to another method:
 
 
 def test2(block)

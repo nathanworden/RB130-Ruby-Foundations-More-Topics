@@ -56,3 +56,21 @@ def reduce(arr)
 
   acc
 end
+
+
+# Jamima Answer
+def reduce(arr)
+  acc = 0
+  arr.each do |number|
+    acc = yield acc, number if number.odd?
+  end
+  
+  acc
+end
+
+
+
+
+
+
+

@@ -33,11 +33,11 @@ nathan = "Nathan is a student at Launch School. Very cool."
       drew
       puts brother
       puts "What a great party!"
-      return
+      break
     end
-
+    break
   end
-
+  break
 end
 
 

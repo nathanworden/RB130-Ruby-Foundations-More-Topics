@@ -43,8 +43,14 @@ Developer.new
 
 
 
-
-
-
-
 # undefined local variable or method `weird_method' for Developer:Class (NameError)
+
+
+
+
+
+
+
+
+
+
