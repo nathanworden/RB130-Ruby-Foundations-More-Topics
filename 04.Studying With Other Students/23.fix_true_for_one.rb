@@ -1,26 +1,14 @@
+# Fix this `one?` method so that it passes all of the tests below.
 
-# answer using #reduce
 
 def one?(arr)
   result = arr.reduce(0) do |acc, item|
     return false if acc >= 2
-    yield(item) ? acc + 1 : acc
+    acc += 1 if yield(item)
   end
   return true if result == 1
   false
 end
-
-# Another way to answer using `#each`
-
-# def one?(arr)
-#   seen_one = false
-#   arr.each do |item|
-#     next unless yield(item)
-#     seen_one = !seen_one
-#     break if seen_one == false
-#   end
-#   seen_one
-# end
 
 
 p one?([1, 3, 5, 6]) {|value| value.even?} == true
@@ -30,3 +18,39 @@ p one?([1, 3, 5, 7]) {|value| value % 5 == 0} == true
 p one?([1, 3, 5, 7]) {|value| true} == false
 p one?([1, 3, 5, 7]) {|value| false} == false
 p one?([]) {|value| true} == false
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+# Answer:
+
+
+
+
+
+
+
+
+
+
+
+def one?(arr)
+  result = arr.reduce(0) do |acc, item|
+    return false if acc >= 2
+    yield(item) ? acc + 1 : acc
+  end
+  return true if result == 1
+  false
+end
