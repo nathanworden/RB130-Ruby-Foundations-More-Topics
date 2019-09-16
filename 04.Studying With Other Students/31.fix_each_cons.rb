@@ -1,19 +1,12 @@
-# In the previous exercise, we wrote a method that emulates Enumerable#each_cons, but limited our method to handling 2 elements at a time. Enumerable#each_cons can actually handle any number of elements at a time: 1, 2, 3, or more.
-
-# Update your each_cons method so it takes an argument that specifies how many elements should be processed at a time.
-
-
-# Algorithm
-# define a method which takes an array and an integer
-# Take a slice of the array from array[0] to array[num - 1]
+# Fix the each_cons method so that all the tests below pass
 
 def each_cons(arr, group_size)
   start = 0
-  finish = group_size - 1
+  finish = group_size
   num_iterations = arr.size - (finish)
-  num_iterations.times do |_|
-    set = arr[start..finish]
-    yield(*set)
+  num_iterations.times do |num|
+    set = arr[start...num]
+    yield(set)
     start += 1
     finish += 1
   end
@@ -52,6 +45,23 @@ each_cons([1, 3, 6, 10], 5) do |value1, *values|
 end
 p hash == {}
 
+
+
+
+
+# Answer:
+
+# def each_cons(arr, group_size)
+#   start = 0
+#   finish = group_size - 1
+#   num_iterations = arr.size - (finish)
+#   num_iterations.times do |_|
+#     set = arr[start..finish]
+#     yield(*set)
+#     start += 1
+#     finish += 1
+#   end
+# end
 
 
 
