@@ -50,12 +50,11 @@ Developer.new.name
 # Chris Lee
 
 # Explination:
-# With the usage of alias the method “name” is not able to pick the
-#  method “full_name” defined in Developer.
+# With the usage of alias the method “name” is not able to pick the method “full_name” defined in Developer.
 
-# This is because alias is a keyword and it is lexically scoped. 
-# It means it treats self as the value of self at the time the source 
-# ode was read . In contrast alias_method treats self as the value 
+# This is because alias is a keyword and it is lexically scoped.  It means it treats `self` as the value of self at the time the source code was read . 
+
+# In contrast alias_method treats self as the value 
 # determined at the run time.
 
 
