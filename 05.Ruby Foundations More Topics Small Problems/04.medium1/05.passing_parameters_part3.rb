@@ -25,6 +25,6 @@ end
 # end
 
 # 4
-gather(items) do | item1, item2, item3, item4|
-  puts "#{item1}, #{item2}, #{item3}, and #{item4}"
-end
+# gather(items) do | item1, item2, item3, item4|
+#   puts "#{item1}, #{item2}, #{item3}, and #{item4}"
+# end
