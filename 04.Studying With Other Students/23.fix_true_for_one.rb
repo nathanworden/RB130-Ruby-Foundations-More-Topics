@@ -54,3 +54,14 @@ def one?(arr)
   return true if result == 1
   false
 end
+
+
+# Juliet answer:
+arr.each do |element|
+    if yield(element)
+      return false if has_been_met
+      has_been_met = true
+    end
+  end
+  has_been_met  
+end

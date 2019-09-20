@@ -51,17 +51,17 @@ p hash == {}
 
 # Answer:
 
-# def each_cons(arr, group_size)
-#   start = 0
-#   finish = group_size - 1
-#   num_iterations = arr.size - (finish)
-#   num_iterations.times do |_|
-#     set = arr[start..finish]
-#     yield(*set)
-#     start += 1
-#     finish += 1
-#   end
-# end
+def each_cons(arr, group_size)
+  start = 0
+  finish = group_size - 1
+  num_iterations = arr.size - (finish)
+  num_iterations.times do |_|
+    set = arr[start..finish]
+    yield(*set)
+    start += 1
+    finish += 1
+  end
+end
 
 
 

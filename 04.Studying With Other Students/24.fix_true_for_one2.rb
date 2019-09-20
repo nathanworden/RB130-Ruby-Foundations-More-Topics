@@ -29,29 +29,18 @@ p one?([]) {|value| true} == false
 
 
 
-
-
-
-
-
-
-
-
-
-
-
 # Answer:
 
 
 
 
 
-def one?(arr)
-  seen_one = 0
-  arr.each do |item|
-    return false if seen_one >= 2
-    seen_one += 1 if yield(item)
-  end
-  return true if seen_one == 1
-  false
-end
+# def one?(arr)
+#   seen_one = 0
+#   arr.each do |item|
+#     return false if seen_one >= 2
+#     seen_one += 1 if yield(item)
+#   end
+#   return true if seen_one == 1
+#   false
+# end

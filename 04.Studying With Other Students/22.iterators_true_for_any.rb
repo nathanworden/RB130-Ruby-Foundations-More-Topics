@@ -52,3 +52,4 @@ def any?(arr)
   arr.each {|element, value| return true if yield(element, value)}
   false
 end
+
