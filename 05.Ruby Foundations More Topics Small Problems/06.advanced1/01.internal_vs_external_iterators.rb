@@ -25,30 +25,69 @@
 # puts fac.next
 # puts fac.next
 
-fac = Enumerator.new do |y|
-  n = 1
-  result = 1
-  loop do
-    y << result
-    result = n * result
-    n += 1
-  end
-end
+
+# factorial = Enumerator.new do |yielder|
+#   number = 1
+#   accumulator = 1
+#   loop do
+#     yielder << accumulator
+#     accumulator = number * accumulator
+#     number += 1
+#   end
+# end
 
 
-enum = fac.each
+# 7.times {puts factorial.next}
 
-p enum.next
-p enum.next
-p enum.next
-p enum.next
-p enum.next
-p enum.next
-p enum.next
-# enum.rewind
+# factorial.rewind
 
-p enum.each_slice(7)
-
+# factorial.each_with_index do |number, index|
+#   puts number
+#   break if index == 6
+# end
 
 
 # [1, 1, 2, 6, 24, 120, 720]
+
+
+
+
+
+
+
+
+factorial = Enumerator.new do |yielder|
+  accumulator = 1
+  number = 0
+  loop do
+    accumulator = number.zero? ? 1 : accumulator * number
+    yielder << accumulator
+    number += 1
+  end
+end
+
+7.times { puts factorial.next }
+
+# factorial.rewind
+
+factorial.each_with_index do |number, index|
+  puts number
+  break if index == 6
+end
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
