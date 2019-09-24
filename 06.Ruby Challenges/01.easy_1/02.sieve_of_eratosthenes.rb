@@ -20,30 +20,30 @@
 
 # My Answer:
 
-# class Sieve
-#  attr_accessor :limit, :hsh
+class Sieve
+ attr_accessor :limit, :hsh
 
-#   def initialize(limit)
-#     @limit = limit - 1
-#     @hsh = Hash.new {|hash, key| hash[key] = ''}
-#   end
+  def initialize(limit)
+    @limit = limit - 1
+    @hsh = Hash.new {|hash, key| hash[key] = ''}
+  end
 
-#   def primes
-#     limit.times {|num| @hsh[num + 2]}
-#     counter = 1
-#     loop do
-#       counter += 1
-#       break if hsh.keys[-1] == counter
-#       next if hsh[counter] == 'X'
-#       hsh.each do |key, value| 
-#         if key % counter == 0
-#           hsh[key] = 'X' unless key == counter
-#         end
-#       end
-#     end
-#     hsh.select {|key, value| value != 'X'}.keys
-#   end
-# end
+  def primes
+    limit.times {|num| @hsh[num + 2]}
+    counter = 1
+    loop do
+      counter += 1
+      break if hsh.keys[-1] == counter
+      next if hsh[counter] == 'X'
+      hsh.each do |key, value| 
+        if key % counter == 0
+          hsh[key] = 'X' unless key == counter
+        end
+      end
+    end
+    hsh.select {|key, value| value != 'X'}.keys
+  end
+end
 
 # # test = Sieve.new(1000)
 # test = Sieve.new(10)
