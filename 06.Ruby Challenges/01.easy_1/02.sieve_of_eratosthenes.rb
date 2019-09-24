@@ -45,6 +45,12 @@ class Sieve
   end
 end
 
+def test
+  puts "what"
+end
+
+p test
+
 # # test = Sieve.new(1000)
 # test = Sieve.new(10)
 # p test.primes
