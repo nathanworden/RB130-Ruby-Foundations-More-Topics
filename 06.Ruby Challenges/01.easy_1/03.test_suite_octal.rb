@@ -75,4 +75,12 @@ class OctalTest < Minitest::Test
     # skip
     assert_equal 0, Octal.new('234abc').to_decimal
   end
+
+  def test_bcd_is_seen_as_invalid_and_returns_0
+    assert_equal 0, Octal.new('bcd').to_decimal
+  end
+
+  def test_b7_is_seen_as_invalid_and_returns_0
+    assert_equal(0, Octal.new('bcd7').to_decimal)
+  end
 end
