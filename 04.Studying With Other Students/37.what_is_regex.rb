@@ -762,7 +762,7 @@
 
 # 50)
 
-# Challenge: write a method that changes dates in the format 2016-06-17 or 2016/06/17 to the format 17.06.2016. You must use a regular expression and should use methods described in this section.
+# Challenge: write a method that changes dates in the format 2016-06-17 or 2016/06/17 to the format 17.06.2016. You must use a regular expression and should use capture groups.
 
 
 # Example:
@@ -799,6 +799,17 @@
 
 
 
+# 51) Write a regex that will return true if the `remark` is all uppercase
 
+# remark1 = "This is OK!"
+# remark2 = "THIS IS OK!"
+
+# p remark1.match?(/[A-Z]+/) && !remark1.match(/[a-z]/) #=> false
+# p remark2.match?(/[A-Z]+/) && !remark2.match(/[a-z]/) #=> true
+
+# # How can you test the same thing without using regex?
+
+# p remark1.upcase == remark1 # => false
+# p remark2.upcase == remark2 # => true
 
 

@@ -26,13 +26,6 @@ end
 
 
 
-
-
-
-
-
-
-
 #Answer: 
 
 
@@ -54,3 +47,29 @@ factorial = Enumerator.new do |yielder|
 end
 
 10.times { puts factorial.next }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
