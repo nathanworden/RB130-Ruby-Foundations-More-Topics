@@ -113,6 +113,33 @@ octal = Octal.new('bcd7')
 p octal.to_decimal
 
 
+# My better answer when studying with Juliet:
+
+# class Octal
+#   def initialize(octal)
+#     @octal = octal
+#   end
+
+#   def to_decimal
+#     return 0 if invalid?
+#     @octal.to_i.digits.map.with_index do |num, index|
+#       num * 8**index
+#     end.sum
+#   end
+
+#   def invalid?
+#     @octal.match(/[a-zA-Z89]+/)
+#   end
+# end
+
+# p Octal.new('233').to_decimal == 155
+
+
+# p Octal.new('1').to_decimal == 1
+# p Octal.new('10').to_decimal == 8
+# p Octal.new('carrot').to_decimal == 0
+# p Octal.new('234abc').to_decimal == 0
+# p Octal.new('784').to_decimal == 0
 
 
 
