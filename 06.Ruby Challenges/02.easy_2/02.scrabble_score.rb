@@ -22,8 +22,8 @@
             3 => %w(B C M P),
             4 => %(F H V W Y),
             5 => %w(K),
-            6 => %w(J X),
-            7 => %w(Q Z)}
+            8 => %w(J X),
+            10 => %w(Q Z)}
 
   # Test Cases
 
@@ -42,6 +42,8 @@
 
 # Code
 
+require 'pry'
+
 class Scrabble
   def initialize(str)
     @input = str
@@ -49,6 +51,17 @@ class Scrabble
 
   def score
     return 0 if invalid?
+    # binding.pry
+      @input.chars.reduce(0) do |accum, letter|
+      SCORES.each do |key, value| 
+        accum += key if SCORES[key].include?(letter.upcase)
+      end
+      accum
+    end
+  end
+
+  def self.score(str)
+    new(str).score
   end
 
   def invalid?
@@ -60,7 +73,37 @@ end
 
 
 
+# Juliet Answer
+
+# require 'pry'
+
+# class Scrabble
+#   SCORE = { 1 => %w(A E I O U L N R S T), 2 => %w(D G), 3 => %w(B C M P),
+#             4 => %w(F H V W Y), 5 => %w(K), 8 => %w(J X), 10 => %w(Q Z) }
+
+#   def initialize(word)
+#     @word = word
+#   end
+
+#   def score
+#     return 0 if @word.nil?
+#     # binding.pry
+#     @word.gsub(/[^a-z]/i, '').chars.inject(0) do |sum, char|
+#       puts "#{char} += #{sum}"
+#       SCORE.select { |_, v| v.include? char.upcase }.keys.first + sum
+#     end
+#   end
+
+#   def self.score(word)
+#     new(word).score
+#   end
+# end
+
+
+
   # scrabble = Scrabble.new('').score
+  # p Scrabble.new('f').score
+  p Scrabble.new('OXYPHENBUTAZONE').score
 
 
 
