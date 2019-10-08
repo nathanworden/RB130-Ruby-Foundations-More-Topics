@@ -1,5 +1,5 @@
 require 'minitest/autorun'
-require_relative '03.beer_song.rb'
+require_relative '03.beer_song_try2.rb'
 
 # rubocop:disable Metrics/LineLength
 class BeerSongTest < Minitest::Test
@@ -49,7 +49,7 @@ class BeerSongTest < Minitest::Test
   end
 
   def test_a_few_verses
-    skip
+    # skip
     expected = "2 bottles of beer on the wall, 2 bottles of beer.\n" \
       "Take one down and pass it around, 1 bottle of beer on the wall.\n" \
       "\n" \
