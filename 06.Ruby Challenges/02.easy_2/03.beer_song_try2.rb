@@ -50,28 +50,28 @@
 
 
 class BeerSong
-  def initialize(whole_song)
+  def initialize
     @whole_song = whole_song
   end
 
-  def verse(index)
-    whole_song[index]
+  def verse(from_index)
+    @whole_song[from_index]
   end
 
   def verses(from_index, to_index)
-    whole_song[from_index..to_index]
+    @whole_song[to_index..from_index].reverse.join("\n")
   end
 
   def lyrics
-    whole_song.reverse.join
+    @whole_song.reverse.join("\n")
   end
 
   def whole_song
     the_whole_thing = [ "No more bottles of beer on the wall, no more bottles of beer.\nGo to the store and buy some more, 99 bottles of beer on the wall.\n",
-      "1 bottle of beer on the wall, 1 bottle of beer.\nTake it down and pass it around, no more bottles of beer on the wall.\n\n",
-      "2 bottles of beer on the wall, 2 bottles of beer.\nTake one down and pass it around, 1 bottle of beer on the wall.\n\n"]
+      "1 bottle of beer on the wall, 1 bottle of beer.\nTake it down and pass it around, no more bottles of beer on the wall.\n",
+      "2 bottles of beer on the wall, 2 bottles of beer.\nTake one down and pass it around, 1 bottle of beer on the wall.\n"]
     97.times do |num|
-        the_whole_thing << "#{num + 3} bottles of beer on the wall, #{num + 3} bottles of beer.\nTake one down and pass it around, #{num + 2} bottles of beer on the wall.\n\n"
+        the_whole_thing << "#{num + 3} bottles of beer on the wall, #{num + 3} bottles of beer.\nTake one down and pass it around, #{num + 2} bottles of beer on the wall.\n"
     end
     the_whole_thing
   end
@@ -82,6 +82,8 @@ end
 
 # p BeerSong.new.whole_song
 # p BeerSong.new.lyrics
+# p BeerSong.new.verses(99, 98)
+# p BeerSong.new.verse(99)
 
 
 
