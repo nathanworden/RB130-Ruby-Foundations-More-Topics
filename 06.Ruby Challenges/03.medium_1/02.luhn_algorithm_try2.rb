@@ -1,19 +1,19 @@
 class Luhn
   def initialize(num)
-    @num = num.digits.reverse
+    @num = num.digits
   end
 
   attr_accessor :num
 
   def addends
     @num.map.with_index do |element, idx|
-      if @num.size.odd? && idx.odd? || @num.size.even? && idx.even?
+      if idx.odd?
         double = element * 2
         double > 9 ? double - 9 : double
       else
         element
       end
-    end
+    end.reverse
   end
 
   def checksum
@@ -25,7 +25,6 @@ class Luhn
   end
 
   def self.create(number)
-    # input = (number.to_s.chars << 0).join.to_i
     input = number * 10
     if Luhn.new(input).valid?
       input
@@ -36,4 +35,3 @@ class Luhn
     end
   end
 end
-

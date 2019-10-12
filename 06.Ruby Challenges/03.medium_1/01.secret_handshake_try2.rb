@@ -33,6 +33,8 @@
  # Then select the elements of the array when the string has a coorisponding index that is 1.
  # 
 
+ require 'pry'
+
 class SecretHandshake
   COMMANDS = %w(wink double\ blink close\ your\ eyes jump).freeze
   BASE = 2
@@ -46,7 +48,7 @@ class SecretHandshake
   def commands
     self.code = code.is_a?(Integer) ? code.to_s(BASE) : validate
 
-    cmds = COMANDS.select.with_index do |_, idx|
+    cmds = COMMANDS.select.with_index do |_, idx|
       code.reverse[idx] == '1'
     end
 
@@ -58,8 +60,8 @@ class SecretHandshake
   end
 end
 
-
-test = SecretHandshake.new
+binding.pry
+test = SecretHandshake.new(3).commands
 
 
 
