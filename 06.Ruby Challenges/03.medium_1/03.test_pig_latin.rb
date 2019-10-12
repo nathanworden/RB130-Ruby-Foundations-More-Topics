@@ -1,5 +1,5 @@
 require 'minitest/autorun'
-require_relative '03.pig_latin.rb'
+require_relative '03.other_student_pig_latin.rb'
 
 class PigLatinTest < Minitest::Test
   def test_word_beginning_with_a
@@ -67,12 +67,12 @@ class PigLatinTest < Minitest::Test
   end
 
   def test_word_beginning_with_xe
-    skip
+    # skip
     assert_equal 'enonxay', PigLatin.translate('xenon')
   end
 
   def test_word_beginning_with_xr
-    skip
+    # skip
     assert_equal 'xrayay', PigLatin.translate('xray')
   end
 end
