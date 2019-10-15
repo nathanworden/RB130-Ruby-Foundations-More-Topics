@@ -1,5 +1,5 @@
 require 'minitest/autorun'
-require_relative '05.circular_buffer_try2.rb'
+require_relative '05.circular_buffer_try3.rb'
 
 class CircularBufferTest < Minitest::Test
   def test_read_empty_buffer_throws_buffer_empty_exception
@@ -26,7 +26,7 @@ class CircularBufferTest < Minitest::Test
   end
 
   def test_clearing_buffer
-    skip
+    # skip
     buffer = CircularBuffer.new(3)
     ('1'..'3').each { |i| buffer.write i }
     buffer.clear
@@ -39,7 +39,7 @@ class CircularBufferTest < Minitest::Test
   end
 
   def test_alternate_write_and_read
-    skip
+    # skip
     buffer = CircularBuffer.new(2)
     buffer.write '1'
     assert_equal '1', buffer.read
@@ -48,7 +48,7 @@ class CircularBufferTest < Minitest::Test
   end
 
   def test_reads_back_oldest_item
-    skip
+    # skip
     buffer = CircularBuffer.new(3)
     buffer.write '1'
     buffer.write '2'
@@ -59,7 +59,7 @@ class CircularBufferTest < Minitest::Test
   end
 
   def test_writes_of_nil_should_not_occupy_buffer
-    skip
+    # skip
     buffer = CircularBuffer.new(5)
     buffer.write nil
     ('1'..'3').each { |i| buffer.write i }
@@ -67,7 +67,7 @@ class CircularBufferTest < Minitest::Test
   end
 
   def test_writing_to_a_full_buffer_throws_an_exception
-    skip
+    # skip
     buffer = CircularBuffer.new(2)
     buffer.write '1'
     buffer.write '2'
@@ -75,7 +75,7 @@ class CircularBufferTest < Minitest::Test
   end
 
   def test_overwriting_oldest_item_in_a_full_buffer
-    skip
+    # skip
     buffer = CircularBuffer.new(2)
     buffer.write '1'
     buffer.write '2'
@@ -86,7 +86,7 @@ class CircularBufferTest < Minitest::Test
   end
 
   def test_forced_writes_of_nil_should_not_occupy_buffer
-    skip
+    # skip
     buffer = CircularBuffer.new(2)
     ('1'..'2').each { |i| buffer.write i }
     buffer.write! nil
@@ -96,7 +96,7 @@ class CircularBufferTest < Minitest::Test
   end
 
   def test_forced_writes_to_non_full_buffer_should_behave_like_writes
-    skip
+    # skip
     buffer = CircularBuffer.new(2)
     buffer.write '1'
     buffer.write! '2'
@@ -107,7 +107,7 @@ class CircularBufferTest < Minitest::Test
 
   # rubocop:disable Metrics/MethodLength
   def test_alternate_read_and_write_into_buffer_overflow
-    skip
+    # skip
     buffer = CircularBuffer.new(5)
     ('1'..'3').each { |i| buffer.write i }
     buffer.read
@@ -124,5 +124,23 @@ class CircularBufferTest < Minitest::Test
     assert_equal 'B', buffer.read
     assert_raises(CircularBuffer::BufferEmptyException) { buffer.read }
   end
+
+  def test_write_when_full_buffer_then_write_when_not_full_buffer
+    buffer = CircularBuffer.new(4)
+    ('1'..'4').each {|i| buffer.write i}
+    # assert_equal(["4", "3", "2", "1"], buffer.circular_buffer)
+    buffer.write!('5')
+    # assert_equal(["4", "3", "2", "5"], buffer.circular_buffer)
+    assert_equal('2', buffer.read)
+    # assert_equal(["4", "3", "5"], buffer.circular_buffer)
+    buffer.write('6')
+    # assert_equal(["6", "4", "3", "5"], buffer.circular_buffer)
+    buffer.read
+    buffer.read
+    assert_equal(['6', '5'], buffer.circular_buffer)
+    assert_equal('5', buffer.read)
+  end
   # rubocop:enable Metrics/MethodLength
 end
+
+
