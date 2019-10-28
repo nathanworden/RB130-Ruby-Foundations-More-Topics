@@ -5,7 +5,6 @@
     # Then if the number has an even number of digits see if the second half reversed matches the front half.
 require 'prime'
 
-
 class Palindromes
 
   attr_reader :value
@@ -66,6 +65,11 @@ class Palindromes
 end
 
 
+palindromes = Palindromes.new(max_factor: 9)
+p palindromes.generate
+largest = palindromes.largest
+p largest.value
+p largest.factors
 
 
 
