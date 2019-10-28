@@ -3,6 +3,7 @@
 # Find palindromic numbers in a give range
     # If the number has an odd number of digits, take out the middle digit
     # Then if the number has an even number of digits see if the second half reversed matches the front half.
+require 'prime'
 
 
 class Palindromes
@@ -13,6 +14,8 @@ class Palindromes
     @input_hsh = input_hsh
     @input_hsh[:min_factor] ||= 0
     @value = "nothing yet"
+    @max_factor = input_hsh[:max_factor]
+    @min_factor = input_hsh[:min_factor]
   end
 
   def generate
@@ -33,7 +36,10 @@ class Palindromes
   end
 
   def factors
-    
+    all_factors = (1..value).select {|num| value % num == 0 && num >= @min_factor && num <= @max_factor}
+    all_factors.map! {|num| [@value / num, num]}
+    result = all_factors.select {|arr| arr.all? {|ele| ele >= @min_factor && ele <= @max_factor}}
+    result.map! {|arr| arr.sort}.uniq
   end
 
   private
@@ -58,20 +64,6 @@ class Palindromes
     winners.uniq
   end
 end
-
-palindromes = Palindromes.new(max_factor: 99, min_factor: 10)
-
-
-palindromes.generate
-largest = palindromes.largest
-p largest.value
-p largest.factors
-
-smallest = palindromes.smallest
-p smallest.value
-
-
-
 
 
 
