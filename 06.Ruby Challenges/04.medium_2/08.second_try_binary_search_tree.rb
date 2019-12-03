@@ -82,29 +82,69 @@ class Bst
   def each
     return to_enum unless block_given?
 
-    left.each {|num| yield(num)} if @left
+    if @left
+      @left.each do |num| 
+        yield(num)
+      end
+    end
+
     yield(data)
-    right.each {|num| yield(num)} if @right
+
+    if @right 
+      @right.each do |num| 
+        yield(num)
+      end
+    end
   end
 end
 
- def record_all_data(bst)
-    all_data = []
-    bst.each { |data| all_data << data }
-    all_data
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+def record_all_data(bst)
+  all_data = []
+  bst.each do |data| 
+    all_data << data
   end
+  all_data
+end
 
-four = Bst.new 4
-    four.insert 2
-    four.insert 1
-    four.insert 3
-    four.insert 6
-    four.insert 7
-    four.insert 5
-    binding.pry
+ def test_iterating_over_complex_tree
+    # skip
+  four = Bst.new 4
+  four.insert 2
+  four.insert 1
+  four.insert 3
+  four.insert 6
+  four.insert 7
+  four.insert 5
+  binding.pry
+  record_all_data(four)
+end
 
-    p record_all_data(four)
-# should be [1, 2, 3, 4, 5, 6, 7]
+test_iterating_over_complex_tree
+
+
+
+
+
+
+
+
 
 
 
