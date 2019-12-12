@@ -79,21 +79,17 @@ class Bst
     end
   end
 
-  def each
+  def each(&whatever)
     return to_enum unless block_given?
 
     if @left
-      @left.each do |num| 
-        yield(num)
-      end
+      @left.each(&whatever)
     end
 
     yield(data)
 
     if @right 
-      @right.each do |num| 
-        yield(num)
-      end
+      @right.each(&whatever)
     end
   end
 end
@@ -115,28 +111,28 @@ end
 
 
 
-def record_all_data(bst)
-  all_data = []
-  bst.each do |data| 
-    all_data << data
-  end
-  all_data
-end
+# def record_all_data(bst)
+#   all_data = []
+#   bst.each do |data| 
+#     all_data << data
+#   end
+#   all_data
+# end
 
- def test_iterating_over_complex_tree
-    # skip
-  four = Bst.new 4
-  four.insert 2
-  four.insert 1
-  four.insert 3
-  four.insert 6
-  four.insert 7
-  four.insert 5
-  binding.pry
-  record_all_data(four)
-end
+#  def test_iterating_over_complex_tree
+#     # skip
+#   four = Bst.new 4
+#   four.insert 2
+#   four.insert 1
+#   four.insert 3
+#   four.insert 6
+#   four.insert 7
+#   four.insert 5
+#   binding.pry
+#   record_all_data(four)
+# end
 
-test_iterating_over_complex_tree
+# test_iterating_over_complex_tree
 
 
 

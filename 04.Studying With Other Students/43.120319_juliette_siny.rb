@@ -54,13 +54,13 @@
 # Get the index the character that is curretnly in the the substring that matches the new character
 # Git rid of all characters up to that index.
 # Continue the process starting with the index
+# require 'pry'
 
 def length_of_longest_substring(str)
   arr = str.chars
   lengths = []
   sub_str = []
   arr.each do |letter|
-
     if sub_str.include?(letter)
       lengths << sub_str.length
       idx = sub_str.index(letter)
@@ -72,28 +72,52 @@ def length_of_longest_substring(str)
   lengths.max
 end
 
-def length_of_longest_substring(s)
-  current = []
-  longest = 0
+# def length_of_longest_substring(s)
+#   current = []
+#   longest = 0
   
 
-  s.each_char do |char|
-    if current.include?(char)
-      longest = [longest, current.size].max
-      index = current.index(char) + 1
-      current = current[index..-1] # remove first letters until duplicate value
-    end
-    current << char
-  end
+#   s.each_char do |char|
+#     if current.include?(char)
+#       longest = [longest, current.size].max
+#       index = current.index(char) + 1
+#       current = current[index..-1] # remove first letters until duplicate value
+#     end
+#     current << char
+#   end
 
-  [longest, current.size].max
-end
+#   [longest, current.size].max
+# end
 
 
-p length_of_longest_substring('abcabcbb')         == 3  #'abc'
-p length_of_longest_substring('bbbbb')            == 1  # 'b'
-p length_of_longest_substring('pwwkew')           == 3  # 'wke'
-p length_of_longest_substring(' ')                == 1
-p length_of_longest_substring('au')               == 2
-p length_of_longest_substring('aab')              == 2
-p length_of_longest_substring('Nathan is trying') == 8 # 's trying'
+p length_of_longest_substring('abcabcbb')         #== 3  #'abc'
+# p length_of_longest_substring('bbbbb')            == 1  # 'b'
+# p length_of_longest_substring('pwwkew')           == 3  # 'wke'
+# p length_of_longest_substring(' ')                == 1
+# p length_of_longest_substring('au')               == 2
+# p length_of_longest_substring('aab')              == 2
+# p length_of_longest_substring('Nathan is trying') == 8 # 's trying'
+
+
+
+
+# Jamima Answer
+# def longest_substring_length(string)
+#   string_length = string.length
+
+#   string_length.downto(1) do |substring_length|
+#     max = string_length - substring_length
+#     (0..max).each do |start|
+#       substring = string[start, substring_length]
+#       puts "substring_length: #{substring_length}"
+#       puts "start: #{start}"
+#       puts substring
+#       return substring_length if unique?(substring)
+#     end
+    
+#   end
+# end
+
+# def unique?(string)
+#   string.chars.uniq.length == string.length
+# end
