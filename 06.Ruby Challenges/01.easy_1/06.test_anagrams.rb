@@ -1,5 +1,5 @@
 require 'minitest/autorun'
-require_relative '06.anagrams.rb'
+require_relative '06.anagrams_try2.rb'
 
 class AnagramTest < Minitest::Test
   def test_no_matches
