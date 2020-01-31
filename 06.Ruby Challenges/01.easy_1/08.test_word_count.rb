@@ -1,5 +1,5 @@
 require 'minitest/autorun'
-require_relative '08.word_count.rb'
+require_relative '08.word_count2.rb'
 
 # Test data version:
 
@@ -95,6 +95,7 @@ class PhraseTest < Minitest::Test
   end
 
   def test_ends_in_apostrophy
+    # skip
     phrase = Phrase.new("Louis' classroom.")
     counts = {
       "louis'" => 1, 'classroom' => 1
