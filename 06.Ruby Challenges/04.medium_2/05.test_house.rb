@@ -1,5 +1,5 @@
 require 'minitest/autorun'
-require_relative '05.house'
+require_relative '05.house2'
 
 # rubocop:disable Metrics/MethodLength
 class HouseTest < Minitest::Test

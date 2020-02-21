@@ -1,5 +1,5 @@
 require 'minitest/autorun'
-require_relative 'bowling'
+require_relative '08.bowling2'
 
 class GameTest < Minitest::Test
   def setup
@@ -97,7 +97,7 @@ class GameTest < Minitest::Test
   end
 
   def test_should_allow_fill_ball_in_last_frame_if_spare
-    skip
+    # skip
     roll_n_times(18, 0)
     @game.roll(9)
     @game.roll(1)
@@ -107,7 +107,7 @@ class GameTest < Minitest::Test
   end
 
   def test_should_allow_fill_balls_to_be_strike
-    skip
+    # skip
     roll_n_times(18, 0)
     @game.roll(10)
     @game.roll(10)
@@ -117,13 +117,13 @@ class GameTest < Minitest::Test
   end
 
   def test_should_score_a_perfect_game
-    skip
+    # skip
     roll_n_times(12, 10)
     assert_equal 300, @game.score
   end
 
   def test_should_not_allow_rolls_with_negative_pins
-    skip
+    # skip
     assert_raises(
       RuntimeError,
       'Pins must have a value from 0 to 10') do
@@ -132,7 +132,7 @@ class GameTest < Minitest::Test
   end
 
   def test_should_not_allow_rolls_better_than_strike
-    skip
+    # skip
     assert_raises(
       RuntimeError,
       'Pins must have a value from 0 to 10') do
@@ -141,7 +141,7 @@ class GameTest < Minitest::Test
   end
 
   def test_should_not_allow_two_normal_rolls_better_than_strike
-    skip
+    # skip
     assert_raises RuntimeError, 'Pin count exceeds pins on the lane' do
       @game.roll(5)
       @game.roll(6)
@@ -149,7 +149,7 @@ class GameTest < Minitest::Test
   end
 
   def test_should_not_allow_two_normal_rolls_better_than_strike_in_last_frame
-    skip
+    # skip
     roll_n_times(18, 0)
     assert_raises RuntimeError, 'Pin count exceeds pins on the lane' do
       @game.roll(10)
@@ -159,7 +159,7 @@ class GameTest < Minitest::Test
   end
 
   def test_should_not_allow_to_take_score_at_the_beginning
-    skip
+    # skip
     assert_raises(
       RuntimeError,
       'Score cannot be taken until the end of the game',
@@ -169,7 +169,7 @@ class GameTest < Minitest::Test
   end
 
   def test_should_not_allow_to_take_score_before_game_has_ended
-    skip
+    # skip
     roll_n_times(19, 5)
     assert_raises(
       RuntimeError,
@@ -179,7 +179,7 @@ class GameTest < Minitest::Test
   end
 
   def test_should_not_allow_rolls_after_the_tenth_frame
-    skip
+    # skip
     roll_n_times(20, 0)
     assert_raises(
       RuntimeError,
@@ -190,7 +190,7 @@ class GameTest < Minitest::Test
   end
 
   def test_should_not_calculate_score_before_fill_balls_have_been_played
-    skip
+    # skip
     roll_n_times(10, 10)
 
     assert_raises RuntimeError, 'Game is not yet over, cannot score!' do
